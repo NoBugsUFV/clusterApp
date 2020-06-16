@@ -33,11 +33,6 @@ export default function Home(){
     function reset(){
         setCluster(0);
         setPoints(0);
-        setMembrosExecutando(0);
-        setFaturamento(0);
-        setTotalMembros(0);
-        setNps(0);
-        
     }
 
     return(

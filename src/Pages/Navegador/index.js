@@ -8,6 +8,6 @@ export default function Navegador(params){
     
 
     return(
-        <WebView style={{flex: 1}} source={{uri: `https://${link}`}} />
+        <WebView style={{flex: 1}} source={{uri: `${link}`}} />
     );
 }

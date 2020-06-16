@@ -18,19 +18,19 @@ export default function Links(){
                 </Text>
             </View>
             <TouchableOpacity style={styles.linkNB} onPress={()=>{
-                    navigation.navigate('Navegador', {linkNB: 'nobugs.com.br'});}} ><Text style={styles.linkText}>Nosso Site</Text>
+                    navigation.navigate('Navegador', {linkNB: 'https://nobugs.com.br'});}} ><Text style={styles.linkText}>Nosso Site</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.linkNB} onPress={()=>{
-                    navigation.navigate('Navegador', {linkNB: 'blog.nobugs.com.br'});}} ><Text style={styles.linkText}>Blog</Text>
+                    navigation.navigate('Navegador', {linkNB: 'https://blog.nobugs.com.br'});}} ><Text style={styles.linkText}>Blog</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.linkNB} onPress={()=>{
-                    navigation.navigate('Navegador', {linkNB: 'instagram.com/nobugsufv'});}} ><Text style={styles.linkText}>Instagram</Text>
+                    navigation.navigate('Navegador', {linkNB: 'https://instagram.com/nobugsufv'});}} ><Text style={styles.linkText}>Instagram</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.linkNB} onPress={()=>{
-                    navigation.navigate('Navegador', {linkNB: 'facebook.com/nobugsufv'});}} ><Text style={styles.linkText}>Facebook</Text>
+                    navigation.navigate('Navegador', {linkNB: 'https://facebook.com/nobugsufv'});}} ><Text style={styles.linkText}>Facebook</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.linkNB} onPress={()=>{
-                    navigation.navigate('Navegador', {linkNB: 'linkedin.com/company/nobugsufv/'});}} ><Text style={styles.linkText}>LinkedIn</Text>
+                    navigation.navigate('Navegador', {linkNB: 'https://linkedin.com/company/nobugsufv/'});}} ><Text style={styles.linkText}>LinkedIn</Text>
             </TouchableOpacity>
         </View>
     );
