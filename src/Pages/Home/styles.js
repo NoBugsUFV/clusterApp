@@ -32,7 +32,7 @@ export default StyleSheet.create({
     },
     numCluster:{
         fontSize: 28,
-        color: '#ffca2b'
+        color: '#ffbe30'
     },
     form:{
         marginTop: 20,
