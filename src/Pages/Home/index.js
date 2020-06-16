@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, TextInput, Image, Button } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import styles from './styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Home(){
+    const navigation = useNavigation();
     return(
         <View style={styles.container}>
             <View style={styles.resultBox}>
@@ -42,7 +44,7 @@ export default function Home(){
                 <View style={styles.formField}>
                     <Text style={styles.label}>Membros Executando</Text>
                     <TextInput style={styles.membrosExecutando}
-                        placeholder="80%"
+                        placeholder="Ex: 80%"
                         placeholderTextColor="#999"
                         autoCapitalize='characters'
                         keyboardType="number-pad"
@@ -64,7 +66,7 @@ export default function Home(){
                 <TouchableOpacity style={styles.btnClean}><Text style={styles.btnText}>Limpar</Text></TouchableOpacity>
                 <TouchableOpacity style={styles.btnCalculate}><Text style={styles.btnText}>Calcular</Text></TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.linkNB}><Text style={styles.linkText}>Conheça a No Bugs</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.linkNB} onPress={()=>{navigation.navigate('Links')}} ><Text style={styles.linkText}>Conheça a No Bugs</Text></TouchableOpacity>
         </View>
     );
 }

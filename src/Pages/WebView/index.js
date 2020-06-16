@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Text, TextInput, Image } from 'react-native';
+import { View } from 'react-native';
+import {WebView} from 'react-native-webview';
 
-import styles from './styles';
 
-export default function WebView(){
+export default function Web({params}){
+    //const link = 
+    console.log(params.getParam('link'));
+
     return(
-        <View>
-            <Text>Teste 2</Text>
-        </View>
+        <WebView style={{flex: 1}} source={{uri: link}}></WebView>
     );
 }

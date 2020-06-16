@@ -35,7 +35,7 @@ export default StyleSheet.create({
         color: '#ffca2b'
     },
     form:{
-        marginTop: 10,
+        marginTop: 20,
         flexDirection: 'column',
         alignItems: 'flex-start',
         backgroundColor:'#e3e3e3',
