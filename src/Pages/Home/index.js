@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import { View, Text, TextInput, Image, Button } from 'react-native';
+import { View, Text, TextInput, Image, Button, KeyboardAvoidingView } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import { TextInputMask } from 'react-native-masked-text'
 
 import styles from './styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -36,12 +37,12 @@ export default function Home(){
     }
 
     return(
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior='position'>
             <View style={styles.resultBox}>
                 <Text style={styles.resultTitle}>Resultado</Text>
                 <View style={styles.resultRow}>
                     <Text style={styles.clusterText}>Cluster</Text>
-    <Text style={styles.numCluster}> {cluster}</Text>
+                    <Text style={styles.numCluster}> {cluster}</Text>
                 </View>
                 <View style={styles.resultRow}>
                     <Text style={styles.points}>{points} </Text>
@@ -63,14 +64,26 @@ export default function Home(){
                 </View>
                 <View style={styles.formField}>
                     <Text style={styles.label}>Faturamento</Text>
-                    <TextInput style={styles.faturamento}
+                    <TextInputMask
+                        type={'money'}
+                        options={{
+                            precision: 2,
+                            separator: ',',
+                            delimiter: '.',
+                            unit: 'R$ ',
+                            suffixUnit: ''
+                          }}
+                        value={faturamento}
+                        style={styles.faturamento}
                         placeholder="Ex: R$ 25.000"
                         placeholderTextColor="#999"
                         autoCapitalize='characters'
                         keyboardType="number-pad"
                         autoCorrect={false}
-                        onChangeText={text => setFaturamento(text)}
-                    ></TextInput>
+                        onChangeText={text => setFaturamento(faturamento)}
+                    >
+
+                    </TextInputMask>
                 </View>
                 <View style={styles.formField}>
                     <Text style={styles.label}>Membros Executando</Text>
@@ -100,6 +113,6 @@ export default function Home(){
                 <TouchableOpacity style={styles.btnCalculate} onPress={calculaCluster}><Text style={styles.btnText}>Calcular</Text></TouchableOpacity>
             </View>
             <TouchableOpacity style={styles.linkNB} onPress={()=>{navigation.navigate('Links')}} ><Text style={styles.linkText}>Conheça a No Bugs</Text></TouchableOpacity>
-        </View>
+        </KeyboardAvoidingView>
     );
 }
