@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "clusterApp",
-    "slug": "clusterApp",
+    "name": "Calculadora de Cluster",
+    "slug": "Calculadora de Cluster",
     "platforms": [
       "ios",
       "android",

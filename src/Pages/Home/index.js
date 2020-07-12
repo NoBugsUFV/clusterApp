@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, TextInput, Image, Button, KeyboardAvoidingView } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import { TextInputMask } from 'react-native-masked-text'
@@ -14,6 +14,7 @@ export default function Home(){
     const [faturamento, setFaturamento] = useState(0);
     const [membrosExecutando, setMembrosExecutando] = useState(0);
     const [nps, setNps] = useState(0);
+    const [cleaning, setCleaning] = useState(false);
 
     function calculaCluster(){
         points = (membrosExecutando/100) * (faturamento/totalMembros) * nps;
@@ -34,7 +35,21 @@ export default function Home(){
     function reset(){
         setCluster(0);
         setPoints(0);
+        setCleaning(true);
     }
+
+    useEffect(()=>{
+        if(membrosExecutando < 0 || membrosExecutando > 100){
+        alert('O valor de membros executando deve estar entre 0% e 100%.');
+        setMembrosExecutando(null);
+        }
+    },[membrosExecutando]);
+
+    useEffect(()=>{
+        if(nps < -100 || nps > 100){
+            alert('O valor do NPS deve estar entre -100 e 100');
+        }
+    },[nps]);
 
     return(
         <KeyboardAvoidingView style={styles.container} behavior='position'>
@@ -58,6 +73,7 @@ export default function Home(){
                         autoCapitalize="characters"
                         keyboardType="number-pad"
                         autoCorrect={false}
+                        maxLength={3}
                         onChangeText={text => setTotalMembros(text)}
                         >
                     </TextInput>
@@ -80,9 +96,11 @@ export default function Home(){
                         autoCapitalize='characters'
                         keyboardType="number-pad"
                         autoCorrect={false}
-                        onChangeText={text => setFaturamento(faturamento)}
+                        onChangeText={faturamento => {
+                            let faturamentoFiltrado = (faturamento.split("").filter(n => (Number(n) || n == 0)).join(""))/100;
+                            setFaturamento(faturamentoFiltrado);
+                        }}
                     >
-
                     </TextInputMask>
                 </View>
                 <View style={styles.formField}>
@@ -93,6 +111,7 @@ export default function Home(){
                         autoCapitalize='characters'
                         keyboardType="number-pad"
                         autoCorrect={false}
+                        maxLength={3}
                         onChangeText={text => setMembrosExecutando(text)}
                     ></TextInput>
                 </View>
@@ -104,12 +123,12 @@ export default function Home(){
                         autoCapitalize='characters'
                         keyboardType="number-pad"
                         autoCorrect={false}
+                        maxLength={3}
                         onChangeText={text => setNps(text)}
                     ></TextInput>
                 </View>
             </View>
             <View style={styles.buttonBox}>
-                <TouchableOpacity style={styles.btnClean}><Text style={styles.btnText} onPress={reset}>Limpar</Text></TouchableOpacity>
                 <TouchableOpacity style={styles.btnCalculate} onPress={calculaCluster}><Text style={styles.btnText}>Calcular</Text></TouchableOpacity>
             </View>
             <TouchableOpacity style={styles.linkNB} onPress={()=>{navigation.navigate('Links')}} ><Text style={styles.linkText}>Conheça a No Bugs</Text></TouchableOpacity>

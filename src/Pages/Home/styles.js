@@ -79,25 +79,17 @@ export default StyleSheet.create({
     },
     buttonBox:{
         marginTop: 16,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
         paddingHorizontal: 5
     },
-    btnClean:{
-        backgroundColor: '#0075c9',
-        borderRadius:8,
-        height: 50,
-        width: 175,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
+
     btnCalculate:{
         backgroundColor: '#0bb015',
         borderRadius:8,
         height: 50,
-        width: 170,
+        width: '100%',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        alignSelf: 'center',
     },
     btnText:{
         color: '#EEEEEE'
