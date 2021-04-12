@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-import { View, Text, TextInput, Image, Button } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { View, Text, TextInput, Image, Button, KeyboardAvoidingView } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import { TextInputMask } from 'react-native-masked-text'
 
 import styles from './styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -13,6 +14,7 @@ export default function Home(){
     const [faturamento, setFaturamento] = useState(0);
     const [membrosExecutando, setMembrosExecutando] = useState(0);
     const [nps, setNps] = useState(0);
+    const [cleaning, setCleaning] = useState(false);
 
     function calculaCluster(){
         points = (membrosExecutando/100) * (faturamento/totalMembros) * nps;
@@ -33,15 +35,29 @@ export default function Home(){
     function reset(){
         setCluster(0);
         setPoints(0);
+        setCleaning(true);
     }
 
+    useEffect(()=>{
+        if(membrosExecutando < 0 || membrosExecutando > 100){
+        alert('O valor de membros executando deve estar entre 0% e 100%.');
+        setMembrosExecutando(null);
+        }
+    },[membrosExecutando]);
+
+    useEffect(()=>{
+        if(nps < -100 || nps > 100){
+            alert('O valor do NPS deve estar entre -100 e 100');
+        }
+    },[nps]);
+
     return(
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior='position'>
             <View style={styles.resultBox}>
                 <Text style={styles.resultTitle}>Resultado</Text>
                 <View style={styles.resultRow}>
                     <Text style={styles.clusterText}>Cluster</Text>
-    <Text style={styles.numCluster}> {cluster}</Text>
+                    <Text style={styles.numCluster}> {cluster}</Text>
                 </View>
                 <View style={styles.resultRow}>
                     <Text style={styles.points}>{points} </Text>
@@ -51,26 +67,41 @@ export default function Home(){
             <View style={styles.form}>
                 <View style={styles.formField}>
                     <Text style={styles.label}>Total de membros</Text>
-                    <TextInput style={styles.totalMembros} 
+                    <TextInput style={styles.totalMembros}
                         placeholder="Ex: 32"
                         placeholderTextColor="#999"
                         autoCapitalize="characters"
                         keyboardType="number-pad"
                         autoCorrect={false}
+                        maxLength={3}
                         onChangeText={text => setTotalMembros(text)}
                         >
                     </TextInput>
                 </View>
                 <View style={styles.formField}>
                     <Text style={styles.label}>Faturamento</Text>
-                    <TextInput style={styles.faturamento}
+                    <TextInputMask
+                        type={'money'}
+                        options={{
+                            precision: 2,
+                            separator: ',',
+                            delimiter: '.',
+                            unit: 'R$ ',
+                            suffixUnit: ''
+                          }}
+                        value={faturamento}
+                        style={styles.faturamento}
                         placeholder="Ex: R$ 25.000"
                         placeholderTextColor="#999"
                         autoCapitalize='characters'
                         keyboardType="number-pad"
                         autoCorrect={false}
-                        onChangeText={text => setFaturamento(text)}
-                    ></TextInput>
+                        onChangeText={faturamento => {
+                            let faturamentoFiltrado = (faturamento.split("").filter(n => (Number(n) || n == 0)).join(""))/100;
+                            setFaturamento(faturamentoFiltrado);
+                        }}
+                    >
+                    </TextInputMask>
                 </View>
                 <View style={styles.formField}>
                     <Text style={styles.label}>Membros Executando</Text>
@@ -80,6 +111,7 @@ export default function Home(){
                         autoCapitalize='characters'
                         keyboardType="number-pad"
                         autoCorrect={false}
+                        maxLength={3}
                         onChangeText={text => setMembrosExecutando(text)}
                     ></TextInput>
                 </View>
@@ -91,15 +123,15 @@ export default function Home(){
                         autoCapitalize='characters'
                         keyboardType="number-pad"
                         autoCorrect={false}
+                        maxLength={3}
                         onChangeText={text => setNps(text)}
                     ></TextInput>
                 </View>
             </View>
             <View style={styles.buttonBox}>
-                <TouchableOpacity style={styles.btnClean}><Text style={styles.btnText} onPress={reset}>Limpar</Text></TouchableOpacity>
                 <TouchableOpacity style={styles.btnCalculate} onPress={calculaCluster}><Text style={styles.btnText}>Calcular</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.linkNB} onPress={()=>{navigation.navigate('Links')}} ><Text style={styles.linkText}>Conheça a No Bugs</Text></TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.linkNB} onPress={()=>{navigation.navigate('Links')}} ><Text style={styles.linkText}>Conheça a No Bugs</Text></TouchableOpacity>
-        </View>
+        </KeyboardAvoidingView>
     );
 }

@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 export default StyleSheet.create({
-    container: { 
+    container: {
         flex: 1,
         paddingHorizontal: 24,
         paddingTop: Constants.statusBarHeight - 10
@@ -44,7 +44,8 @@ export default StyleSheet.create({
         paddingVertical: 20
     },
     formField:{
-        marginBottom: 15
+        marginBottom: 15,
+        width: "100%"
     },
     label:{
         marginBottom: 4
@@ -53,51 +54,39 @@ export default StyleSheet.create({
         backgroundColor: '#EEEEEE',
         borderRadius: 5,
         height: 40,
-        width: 320,
         paddingHorizontal: 15
     },
     faturamento:{
         backgroundColor: '#EEEEEE',
         borderRadius: 5,
         height: 40,
-        width: 320,
         paddingHorizontal: 15
     },
     membrosExecutando:{
         backgroundColor: '#EEEEEE',
         borderRadius: 5,
         height: 40,
-        width: 320,
         paddingHorizontal: 15
     },
     nps:{
         backgroundColor: '#EEEEEE',
         borderRadius: 5,
         height: 40,
-        width: 320,
         paddingHorizontal: 15
     },
     buttonBox:{
         marginTop: 16,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingHorizontal: 5
+        paddingHorizontal: 5,
     },
-    btnClean:{
-        backgroundColor: '#0075c9',
-        borderRadius:8,
-        height: 50,
-        width: 175,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
+
     btnCalculate:{
         backgroundColor: '#0bb015',
         borderRadius:8,
         height: 50,
-        width: 170,
+        width: '100%',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        alignSelf: 'center',
     },
     btnText:{
         color: '#EEEEEE'

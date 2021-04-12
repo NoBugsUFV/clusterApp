@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, HeaderStyleInterpolators } from '@react-navigation/stack';
 
 import Home from './Pages/Home';
-import Navegador from './Pages/Navegador';
 import Links from './Pages/Links';
 
 import { WebView } from 'react-native-webview';
@@ -42,7 +41,6 @@ export default function Routes(){
             <Stack.Navigator >
                 <Stack.Screen name="Home" component={Home} options={optionsHome} />
                 <Stack.Screen name="Links" component={Links} options={optionsLinks} />
-                <Stack.Screen name="Navegador" component={Navegador} options={optionsNav} />
             </Stack.Navigator>
         </NavigationContainer>
     );
