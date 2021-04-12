@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Calculadora de Cluster",
-    "slug": "Calculadora de Cluster",
+    "slug": "ClusterApp",
     "platforms": [
       "ios",
       "android",
@@ -21,6 +21,10 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "package": "com.nobugs.calculadoradecluster",
+      "versionCode": 1
+    },
     "ios": {
       "supportsTablet": true
     }

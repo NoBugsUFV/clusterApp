@@ -14,7 +14,7 @@ export default function Links(){
             <View>
                 <Image source={logo} style={styles.logo}/>
                 <Text style={styles.descricao}>
-                    Somos uma empresa jovem focada na qualidade das nossas soluções!
+                    Conheça a No Bugs:
                 </Text>
             </View>
             <TouchableOpacity style={styles.linkNB} onPress={()=>{Linking.openURL('https://nobugs.com.br')}} ><Text style={styles.linkText}>Nosso Site</Text>

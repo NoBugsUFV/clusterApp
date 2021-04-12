@@ -67,7 +67,7 @@ export default function Home(){
             <View style={styles.form}>
                 <View style={styles.formField}>
                     <Text style={styles.label}>Total de membros</Text>
-                    <TextInput style={styles.totalMembros} 
+                    <TextInput style={styles.totalMembros}
                         placeholder="Ex: 32"
                         placeholderTextColor="#999"
                         autoCapitalize="characters"
@@ -130,8 +130,8 @@ export default function Home(){
             </View>
             <View style={styles.buttonBox}>
                 <TouchableOpacity style={styles.btnCalculate} onPress={calculaCluster}><Text style={styles.btnText}>Calcular</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.linkNB} onPress={()=>{navigation.navigate('Links')}} ><Text style={styles.linkText}>Conheça a No Bugs</Text></TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.linkNB} onPress={()=>{navigation.navigate('Links')}} ><Text style={styles.linkText}>Conheça a No Bugs</Text></TouchableOpacity>
         </KeyboardAvoidingView>
     );
 }
