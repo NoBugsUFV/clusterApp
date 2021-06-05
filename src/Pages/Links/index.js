@@ -19,9 +19,9 @@ export default function Links(){
             </View>
             <TouchableOpacity style={styles.linkNB} onPress={()=>{Linking.openURL('https://nobugs.com.br')}} ><Text style={styles.linkText}>Nosso Site</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.linkNB} onPress={()=>{Linking.openURL('https://blog.nobugs.com.br')}} ><Text style={styles.linkText}>Blog</Text>
-            </TouchableOpacity>
             <TouchableOpacity style={styles.linkNB} onPress={()=>{Linking.openURL('https://instagram.com/nobugsufv')}} ><Text style={styles.linkText}>Instagram</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.linkNB} onPress={()=>{Linking.openURL('https://blog.nobugs.com.br')}} ><Text style={styles.linkText}>Blog</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.linkNB} onPress={()=>{Linking.openURL('https://facebook.com/nobugsufv')}} ><Text style={styles.linkText}>Facebook</Text>
             </TouchableOpacity>
